@@ -24,19 +24,11 @@ jobs:
         with:
             path: CItest
 
-      - name: install-intel-compilers
-        run: |
-          wget https://apt.repos.intel.com/intel-gpg-keys/GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
-          sudo apt-key add GPG-PUB-KEY-INTEL-SW-PRODUCTS.PUB
-          echo "deb https://apt.repos.intel.com/oneapi all main" | sudo tee /etc/apt/sources.list.d/oneAPI.list
-          sudo apt-get update
-          sudo apt-get install intel-oneapi-dev-utilities intel-oneapi-mpi-devel intel-oneapi-openmp intel-oneapi-compiler-fortran intel-oneapi-compiler-dpcpp-cpp-and-cpp-classic
-          echo "source /opt/intel/oneapi/setvars.sh" >> ~/.bash_profile
-
       # Install dependencies using Spack
       - name: install-dependencies-with-spack
         if: steps.cache-env.outputs.cache-hit != 'true'
         run: |
+          find /home/runner/work -name CMakeLists.txt
           echo sudo mv /usr/local/ /usr_local_mv
           sudo apt install cmake
           mkdir build
