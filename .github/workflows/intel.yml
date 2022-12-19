@@ -38,13 +38,7 @@ jobs:
         if: steps.cache-env.outputs.cache-hit != 'true'
         run: |
           echo sudo mv /usr/local/ /usr_local_mv
-          git clone -c feature.manyFiles=true https://github.com/NOAA-EMC/spack.git
-          source spack/share/spack/setup-env.sh
-          spack env create upp-env UPP/spack.yaml
-          spack env activate upp-env
-          spack compiler find
           sudo apt install cmake
-          spack external find cmake
-          spack add intel-oneapi-mpi
-          spack concretize
-          spack install --dirty -v --fail-fast
+          mkdir build
+          cd build
+          cmake ..
