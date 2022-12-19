@@ -44,7 +44,7 @@ jobs:
           spack env activate upp-env
           spack compiler find
           sudo apt install cmake
-          spack external find
+          spack external find cmake
           spack add intel-oneapi-mpi
           spack concretize
           spack install --dirty -v --fail-fast
