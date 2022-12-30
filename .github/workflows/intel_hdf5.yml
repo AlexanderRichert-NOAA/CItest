@@ -46,7 +46,9 @@ jobs:
           sudo apt install cmake
           spack external find
           spack add intel-oneapi-mpi
-          sed -i 's|environment: {}|environment: { prepend_path: { LD_LIBRARY_PATH: "/lib/x86_64-linux-gnu/:/usr/lib64/" } }|' spack/var/spack/environments/upp-env/spack.yaml
+          sed -i 's|environment: {}|environment: { prepend_path: { LD_LIBRARY_PATH: /lib/x86_64-linux-gnu } }|' spack/var/spack/environments/upp-env/spack.yaml
+          cat spack/var/spack/environments/upp-env/spack.yaml
           spack concretize
+          spack build-env hdf5 -- bash -c "echo \$LD_LIBRARY_PATH"
           spack install --dirty -v --fail-fast
 
