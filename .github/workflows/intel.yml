@@ -1,8 +1,5 @@
 name: Intel Linux Build
 on:
-  push
-  pull_request
-  workflow_dispatch
   schedule:
     - cron: '*/5 * * * *'
 
