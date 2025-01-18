@@ -1,9 +1,9 @@
 name: Intel Linux Build
 on:
-  - push
-  - pull_request
-  - workflow_dispatch
-  - cron: '*/5 * * * *'
+  push
+  pull_request
+  workflow_dispatch
+  schedule: [cron: '*/5 * * * *']
 
 defaults:
   run:
